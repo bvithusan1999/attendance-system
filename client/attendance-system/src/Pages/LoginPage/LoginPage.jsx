@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './LoginPage.css'
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logIn} from "../../Actions/LoginAction.js";
+
+
 
 const LoginPage = () => {
+    const initialState = {
+        username: "",
+        password: "",
+    };
+    const [data, setData] = useState(initialState);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    
+    const resetForm = () => {
+        setData(initialState);
+    
+    };
+    const handleChange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        
+        e.preventDefault();
+        
+        dispatch(logIn(data, navigate));
+        
+  };
+    
   return (
       <div className='LoginPage'>
           
-    {/* left side */}
+    
 
       <div className="a-left">
 
@@ -15,7 +45,7 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* right form side */}
+      
 
       <div className="a-right">
         <form className="infoForm authForm" >
