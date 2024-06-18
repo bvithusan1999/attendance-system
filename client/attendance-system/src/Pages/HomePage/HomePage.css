@@ -5,18 +5,20 @@
 }
 .logout-button{
     display: flex;
-    
+    width: auto;
     justify-content: flex-end;
 }
 .logout-but{
     display: flex;
     width:5rem;
     height: 2rem;
+    z-index: 99999;
     
 }
 
 .welcome-message{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
@@ -26,7 +28,7 @@
     padding: 2rem;
     border-radius: 20px;
 }
-.welcome-message>span{
+.welcome-message>span:nth-child(1){
     font-size: 3rem;
       background-color: red;
     
@@ -44,4 +46,10 @@
       -moz-background-clip: text;
       -moz-text-fill-color: transparent;
       font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width:500px){
+    .welcome-message>span:nth-child(1){
+    font-size: 2.5rem;
+    }
 }

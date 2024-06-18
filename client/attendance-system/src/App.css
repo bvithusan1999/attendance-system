@@ -55,6 +55,7 @@
   border-radius: 0.5rem;
   background: linear-gradient(106.23deg, #056b57, #15ebcb 100%);
   transition:all 100ms ease-out;
+  cursor: pointer;
 }
 
 .button:hover{

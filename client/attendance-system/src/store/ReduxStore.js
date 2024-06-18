@@ -8,7 +8,11 @@ import { reducers } from "../Reducers";
 
 function saveToLocalStorage(store) {
   try {
-    const serializedStore = JSON.stringify(store);
+    // Create a copy of the store state without errorMsg
+    const stateToPersist = { ...store };
+    delete stateToPersist.auth.errorMsg;
+
+    const serializedStore = JSON.stringify(stateToPersist);
     window.localStorage.setItem("store", serializedStore);
   } catch (e) {
     console.log(e);
@@ -25,6 +29,7 @@ function loadFromLocalStorage() {
     return undefined;
   }
 }
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistedState = loadFromLocalStorage();
 

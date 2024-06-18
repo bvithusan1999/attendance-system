@@ -1,7 +1,7 @@
 import { getUsers } from "../Models/UserModel.js";
 import jwt from "jsonwebtoken";
 
-const SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY || "MERN";
 
 export const login = async (req, res) => {
   const { username, password } = req.body;
